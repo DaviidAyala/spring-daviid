@@ -1,7 +1,11 @@
 package com.mx.springlegacy;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.ServletContext;
@@ -18,6 +22,8 @@ import org.springframework.web.context.support.XmlWebApplicationContext;
 
 import com.mx.springlegacy.beans.Empresa;
 import com.mx.springlegacy.beans.Persona;
+import com.mx.springlegacy.beans.PersonaTarea;
+import com.mx.springlegacy.utils.Utileria;
 
 /**
  * Handles requests for the application home page.
@@ -103,6 +109,49 @@ public class HomeController implements ServletContextAware {
 				.concat(empresa.getEmpleados().get(2).toString()).concat(" ")
 				.concat(empresa.getEmpleados().get(3).toString()).concat(" ")
 				.concat(empresa.getEmpleados().get(4).toString());
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/tareaBeans", method = RequestMethod.GET)
+	public String getPersonaTarea(Model model) {
+		XmlWebApplicationContext context = new XmlWebApplicationContext();
+		context.setConfigLocation("/WEB-INF/spring/appServlet/servlet-context.xml");
+		context.setServletContext(this.servletCont);
+		context.refresh();
+		
+		PersonaTarea tarea = context.getBean("emma", PersonaTarea.class);
+		// usar listSort para ordenar
+		
+		List<PersonaTarea> persons = new ArrayList<PersonaTarea>();		
+		persons.add(tarea);
+		persons.add(context.getBean("jorge", PersonaTarea.class));
+		persons.add(context.getBean("perla", PersonaTarea.class));
+		persons.add(context.getBean("rosario", PersonaTarea.class));
+		persons.add(context.getBean("angel", PersonaTarea.class));
+		persons.add(context.getBean("alma", PersonaTarea.class));
+		
+		Collections.sort(persons, new Comparator<PersonaTarea>(){
+			@Override
+			public int compare(PersonaTarea per1, PersonaTarea per2) {
+				return per1.getEdad() - per2.getEdad();
+			}
+		});
+		
+		StringBuilder stb1 = new StringBuilder();
+		stb1.append("<body>");
+		stb1.append("<div style='backgrond-color:grey; background-image:linear-gradient(90deg, red, orange, yellow, green, blue, purple); width:100%; height:150px; color:#fff;'>");
+		stb1.append(tarea.getNombre());
+		stb1.append(" ");
+		stb1.append(tarea.getSexo());
+		stb1.append(" ");
+		stb1.append(tarea.getSueldoDiario());
+		stb1.append(" ");
+		stb1.append(Utileria.printEmpleadosInfo(tarea.getSubordinados()));
+		stb1.append("</div>");
+		
+		stb1.append(Utileria.printEmpleadosInfo(persons));
+		
+		return stb1.toString();
 	}
 
 }

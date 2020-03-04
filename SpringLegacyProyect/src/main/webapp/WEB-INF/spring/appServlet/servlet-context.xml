@@ -89,4 +89,63 @@
 			<beans:list />
 		</beans:property>
 	</beans:bean>
+	
+	<beans:bean class="com.mx.springlegacy.beans.PersonaTarea" id="perla">
+		<beans:property name="nombre" value="Perla Ramirez" />
+		<beans:property name="edad" value="27" />
+		<beans:property name="sueldoDiario" value="1901.21"/>
+		<beans:property name="sexo" value="Femenino" />
+		<beans:property name="subordinados" >
+			<beans:list />
+		</beans:property>
+	</beans:bean>
+	
+	<beans:bean class="com.mx.springlegacy.beans.PersonaTarea" id="rosario">
+		<beans:property name="nombre" value="Rosario Luna" />
+		<beans:property name="edad" value="19"/>
+		<beans:property name="sueldoDiario" value="771.89" />
+		<beans:property name="sexo" value="Femenino"/>
+		<beans:property name="subordinados">
+			<beans:list />
+		</beans:property>
+	</beans:bean>
+	
+	<beans:bean class="com.mx.springlegacy.beans.PersonaTarea" id="angel">
+		<beans:property name="nombre" value="Angel Rodriguez"/>
+		<beans:property name="edad" value="31"/>
+		<beans:property name="sueldoDiario" value="1021.89" />
+		<beans:property name="sexo" value="Masculino"/>
+		<beans:property name="subordinados">
+			<beans:list>
+				<beans:ref bean="jorge"/>
+				<beans:ref bean="rosario"/>
+			</beans:list>
+		</beans:property>
+	</beans:bean>
+	
+	<beans:bean class="com.mx.springlegacy.beans.PersonaTarea" id="alma">
+		<beans:property name="nombre" value="Alma Chavez"/>
+		<beans:property name="edad" value="41" />
+		<beans:property name="sueldoDiario" value="1581.58"/>
+		<beans:property name="sexo" value="Femenino"/>
+		<beans:property name="subordinados">
+			<beans:list>
+				<beans:ref bean="perla"/>
+			</beans:list>
+		</beans:property>
+	</beans:bean>
+	
+	<beans:bean class="com.mx.springlegacy.beans.PersonaTarea" id="emma">
+		<beans:property name="nombre" value="Emmanuel Gómez" />
+		<beans:property name="edad" value="33" />
+		<beans:property name="sueldoDiario" value="5420.12" />
+		<beans:property name="sexo" value="Masculino" />
+		<beans:property name="subordinados">
+			<beans:list>
+				<beans:ref bean="angel"/>
+				<beans:ref bean="alma"/>
+			</beans:list>
+		</beans:property>
+	</beans:bean>
+	
 </beans:beans>

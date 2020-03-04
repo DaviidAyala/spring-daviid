@@ -8,7 +8,7 @@ public class PersonaTarea {
 	private Double sueldoDiario;
 	private int edad;
 	private String sexo;
-	private List<Persona> subordinados;
+	private List<PersonaTarea> subordinados;
 	
 	public String getNombre() {
 		return nombre;
@@ -34,10 +34,10 @@ public class PersonaTarea {
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
-	public List<Persona> getSubordinados() {
+	public List<PersonaTarea> getSubordinados() {
 		return subordinados;
 	}
-	public void setSubordinados(List<Persona> subordinados) {
+	public void setSubordinados(List<PersonaTarea> subordinados) {
 		this.subordinados = subordinados;
 	}
 	
