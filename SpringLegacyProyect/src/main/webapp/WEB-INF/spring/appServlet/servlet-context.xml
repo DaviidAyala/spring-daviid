@@ -28,4 +28,65 @@
 		<beans:property name="edad" value="34"></beans:property>
 	</beans:bean>
 	
+	
+	<beans:bean class="com.mx.springlegacy.beans.Persona" id="hector">
+		<beans:property name="nombre" value="Hector"></beans:property>
+		<beans:property name="edad" value="22"></beans:property>
+	</beans:bean>
+	
+	<beans:bean class="com.mx.springlegacy.beans.Persona" id="gustavo">
+		<beans:property name="nombre" value="Gustavo"></beans:property>
+		<beans:property name="edad" value="33"></beans:property>
+	</beans:bean>
+	
+	<beans:bean class="com.mx.springlegacy.beans.Persona" id="jeanCarlo">
+		<beans:property name="nombre" value="Jean Carlo"></beans:property>
+		<beans:property name="edad" value="31"></beans:property>
+	</beans:bean>
+	
+	<beans:bean class="com.mx.springlegacy.beans.Persona" id="tona">
+		<beans:property name="nombre" value="Tonathiu"></beans:property>
+		<beans:property name="edad" value="23"></beans:property>
+	</beans:bean>
+	
+	
+	<beans:bean class="com.mx.springlegacy.beans.Persona" id="emmanuel">
+		<beans:property name="nombre" value="Emmanuel"></beans:property>
+		<beans:property name="edad" value="30"></beans:property>
+	</beans:bean>
+	
+	<beans:bean class="com.mx.springlegacy.beans.Persona" id="david">
+		<beans:property name="nombre" value="Daviid"></beans:property>
+		<beans:property name="edad" value="30"></beans:property>
+	</beans:bean>
+	
+	<!-- BEANS EMPRESA-->
+	
+	<beans:bean class="com.mx.springlegacy.beans.Empresa" id="empresa">
+		<beans:property name="nombre" value="BBVA"></beans:property>
+		<beans:property name="ceo" ref="emmanuel"></beans:property>
+		<beans:property name="empleados">
+			<beans:list>
+				<beans:ref bean="hector"/>
+				<beans:ref bean="ronnie"/>
+				<beans:ref bean="gustavo"/>
+				<beans:ref bean="jeanCarlo"/>
+				<beans:ref bean="tona"/>
+				<beans:ref bean="emmanuel"/>
+				<beans:ref bean="david"/>
+			</beans:list>
+		</beans:property>
+	</beans:bean>
+	
+	<!-- PERSONA TAREA -->
+	
+	<beans:bean class="com.mx.springlegacy.beans.PersonaTarea" id="jorge">
+		<beans:property name="nombre" value="Jorge Ocampo" />
+		<beans:property name="edad" value="49"/> 
+		<beans:property name="sueldoDiario" value="2100.34" />
+		<beans:property name="sexo" value="Masculino" />
+		<beans:property name="subordinados" >
+			<beans:list />
+		</beans:property>
+	</beans:bean>
 </beans:beans>
